@@ -1,7 +1,7 @@
 async function postData(data){
 
   try {
-    const response = await fetch(`${this.location.href}rotes`,{
+    const response = await fetch(`${this.location.href}rotes/`,{
         method: "POST",
         body: JSON.stringify({a:214103,b:"石﨑貴之"}),
     });
