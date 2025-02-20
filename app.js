@@ -7,7 +7,7 @@ let fs = new require('fs');
 const app = express();
 
 //サーバの設定
-const server = http.createServer(app);
+// const server = http.createServer(app);
 //getでリクエスト時に処理するコールバック関数指定
 // app.get("/", function(req, res){
 //   console.log(`get req [${req.method}]`)
@@ -81,5 +81,5 @@ app.use((req, res, next) => {  // すべてのアクセスに対応するミド�
 
 
 const port = process.env.PORT || 8080;
-server.listen(port);
+app.listen(port);
 console.log(`__dirname [${__dirname}]`)
