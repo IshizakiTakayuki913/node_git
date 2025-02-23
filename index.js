@@ -1,9 +1,9 @@
-async function postData(data){
 
+async function postData(data){
   try {
-    const response = await fetch(`${this.location.href}rotes/`,{
-        method: "POST",
-        body: JSON.stringify({a:214103,b:"石﨑貴之"}),
+    const response = await fetch(`${this.location.href}rotes?${data}`,{
+        method: "GET",
+        // body: JSON.stringify({a:214103,b:"石﨑貴之"}),
     });
     if (response.ok) {
         const datas = await response.json();
@@ -16,8 +16,6 @@ async function postData(data){
   }
 }
 
-// const ans = document.getElementById("ans")
-// ans.addEventListener("click", postData)
 window.addEventListener("load", (event) => {
   console.log("ページが完全に読み込まれました");
   const ans = document.getElementById('ans')
@@ -25,3 +23,5 @@ window.addEventListener("load", (event) => {
       postData()
   })
 });
+
+

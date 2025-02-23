@@ -15,26 +15,17 @@ const app = express();
 // });
 
 // POSTリクエスト
-app.post('/rotes/', (req, res) => {
-  console.log(`POST get req [${req.method}]`)
-  let data = ""
-
-  req.on('data', function(chunk) {
-    data += chunk
-  })
-  req.on('end', function() {
-    const jsonData = JSON.parse(data)
-    console.log(jsonData)
-    const retData = {number: jsonData.a, name: jsonData.b,
-                    n1: jsonData.b.slice(0,2), n2: jsonData.b.slice(-2)}
-
-    console.log(retData);
-    res.json(retData);
-    // res.send({
-    //   hei: `Hello World`,
-    //   msg:'POST request'
-    // });
-    // console.log(res.writableEnded);
+app.get('/rotes/', (req, res) => {
+  console.log(`get req [${req.method}]`)
+  console.log(`path [${req.url}]`)
+  console.log(`params [${JSON.stringify(req.params)}]`)
+  console.log(`query [${JSON.stringify(req.query)}]`)
+  
+  // res.json(retData);
+  res.send({
+    hei: `Hello World`,
+    msg:'GET request',
+    query: req.query
   });
   
 });
@@ -83,3 +74,33 @@ app.use((req, res, next) => {  // すべてのアクセスに対応するミド�
 const port = process.env.PORT || 8080;
 app.listen(port);
 console.log(`__dirname [${__dirname}]`)
+
+// app.get('/rotes/', (req, res) => {
+//   console.log(`get req [${req.method}]`)
+//   console.log(`path [${req.url}]`)
+//   console.log(`params [${JSON.stringify(req.params)}]`)
+//   console.log(`query [${JSON.stringify(req.query)}]`)
+  
+//   let data = ""
+//   console.log(req.headers)
+
+//   // req.on('data', function(chunk) {
+//   //   data += chunk
+//   // })
+//   // // headers
+//   // req.on('end', function() {
+//   //   const jsonData = JSON.parse(data)
+//   //   console.log(jsonData)
+//   //   const retData = {number: jsonData.a, name: jsonData.b,
+//   //                   n1: jsonData.b.slice(0,2), n2: jsonData.b.slice(-2)}
+
+//   //   console.log(retData);
+//   //   res.json(retData);
+//   //   // res.send({
+//   //   //   hei: `Hello World`,
+//   //   //   msg:'POST request'
+//   //   // });
+//   //   // console.log(res.writableEnded);
+//   // });
+  
+// });
